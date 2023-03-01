@@ -71,6 +71,14 @@ class PyKeyboard(PyKeyboardMeta):
             char_vk = win32api.VkKeyScan(character)
             win32api.keybd_event(char_vk, 0, KEYEVENTF_KEYUP, 0)
 
+    def typewrite(self, characters=[''], press_delay=1):
+        for i in characters :
+            time.sleep(press_delay)
+            self.press_key(character=characters[i])
+            time.sleep(press_delay)
+            self.release_key(character=characters[i])
+            
+            
     def special_key_assignment(self):
         """
         Special Key assignment for windows
